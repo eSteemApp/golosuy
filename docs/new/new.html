@@ -1,0 +1,44 @@
+  <form>
+    <div class="form-group">
+      <label for="title1"></label>
+      <input type="text" class="form-control" id="title1" aria-describedby="titleHelp" placeholder="Введите название" ng-model="data.title" ng-blur="focus()">
+      <small id="titleHelp" class="form-text text-muted">Это будет название опроса / пост в Голосе</small>
+    </div>
+    <div class="form-group">
+      <label for="description1"></label>
+      <textarea class="form-control" id="description1" rows="3" placeholder="Опишите опрос, дайте некоторую справочную информацию..." ng-model="data.description" ng-blur="focus()"></textarea>
+    </div>
+    <fieldset data-ng-repeat="choice in data.choices">
+      <div class="input-group">
+       <input type="text" class="form-control" ng-model="choice.name" placeholder="Введите параметры" ng-blur="focus()">
+       <span class="input-group-btn">
+         <button class="remove btn btn-secondary" type="button" ng-show="$last" ng-click="removeChoice()" class="form-control">x</button>
+       </span>
+     </div>
+   </fieldset>
+   <div class="form-group">
+     <button class="addfields btn btn-secondary" type="button" ng-click="addNewChoice()">Добавить больше полей</button>
+   </div>
+    <div class="form-group">
+      <label for="select1"></label>
+      <select class="form-control" id="select1" ng-model="data.preferences" ng-blur="focus()">
+        <<option value="">Результат</option>
+        <option value="vote">основе голосования</option>
+        <option value="stake" disabled>основе акций</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="email1"></label>
+      <input type="email" class="form-control" id="email1" aria-describedby="emailHelp" placeholder="Введите адрес электронной почты" ng-model="data.email" ng-blur="focus()">
+      <small id="emailHelp" class="form-text text-muted">Необязательно, Мы никогда не будем использовать адрес вашей почти.</small>
+    </div>
+    <p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="height: 1px;" ng-style="{width: progress+'%'}" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </p>
+    <button type="submit" class="btn btn-primary" ng-click="submitPoll()">Отправить</button>
+  </form>
+  <div class="alert alert-warning" role="alert" ng-if="result._id">
+    <strong>Почти готово!</strong> Опрос представлен, для того, чтобы опубликовать его в Голосе, пожалуйста, переводить минимальный 1.000 GBG к <strong>@golosuy</strong> с записки: <strong>{{result._id}}</strong>
+  </div>
