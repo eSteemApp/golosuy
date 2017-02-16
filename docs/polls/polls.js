@@ -13,10 +13,10 @@ angular.module('golosuy.polls', ['ngRoute'])
 
   //console.log('polls');
 
-  steem.api.getDiscussionsByBlog({tag:"golosovanie", limit:30}, function(err, response) {
+  steem.api.getDiscussionsByBlog({tag:"golosuy", limit:30}, function(err, response) {
     //console.log(err, response);
     if (err) {
-      alert('Connection issue, please reload the page!');
+      alert('Проблема подключения, пожалуйста, перезагрузите страницу!');
     }
     if(response) {
       angular.forEach(response, function(v,k){

@@ -57,11 +57,11 @@ angular.module('golosuy.poll', ['ngRoute'])
         }
         if (err) {
           if (err.message.indexOf('already voted')>-1){
-            alert('You have already voted on Answer: '+$scope.user.finalc);
+            alert('Вы уже голосовали на Ответ:'+$scope.user.finalc);
           } else if (err.message.indexOf("weight is too")){
-            alert("Voting weight is too small, please accumulate more voting power or steem power!")
+            alert("Голосование вес слишком мал, пожалуйста, накапливают больше голосов или сила Голоса!")
           } else {
-            alert('Error casting Vote!');
+            alert('Ошибка в голосовании!');
           }
 
         }
@@ -110,7 +110,7 @@ angular.module('golosuy.poll', ['ngRoute'])
   if ($routeParams.permlink) {
     steem.api.getContent($routeParams.author, $routeParams.permlink, function(err, result) {
       if (err) {
-        alert('Error fetching post, please reload the page!');
+        alert('Ошибка при загрузке пост, пожалуйста, перезагрузите страницу!');
       }
       if (result) {
         //console.log(result)
