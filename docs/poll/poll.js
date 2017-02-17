@@ -101,6 +101,9 @@ angular.module('golosuy.poll', ['ngRoute'])
         $scope.barObject.options = {
             'title': $scope.poll.title
         };
+        if (!$scope.$$phase){
+          $scope.$apply();
+        }
       }, 10);
     }
   }
